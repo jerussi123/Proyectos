@@ -225,3 +225,32 @@ def validar_modelo(n_clicks, temp, humidity, wind_speed, solar_radiation, rainfa
         title='Predicción de la Demanda de Bicicletas por Hora',
         labels={'x': 'Hora del día', 'y': 'Demanda de Bicicletas'}
     )
+# grafica de ingresos
+    valores = [ingresos, costos]
+    etiquetas = ['Ingresos', 'Costos']
+    grafico_ingresos_egresos = px.pie(values=valores, names=etiquetas, title='Ingresos vs Costos')
+    grafico_ingresos_egresos.update_traces(textinfo='percent+label')
+
+    
+    rentabilidad = ingresos - costos
+    rentabilidad_porcentaje = (rentabilidad / ingresos) * 100 if ingresos > 0 else 0
+
+    # Idea grafico de rentabilidada
+    grafico_rentabilidad = go.Figure(go.Indicator(
+        mode="gauge+number",
+        value=rentabilidad_porcentaje,
+        title={'text': "Rentabilidad (%)"},
+        gauge={'axis': {'range': [-100, 100]},
+               'bar': {'color': "darkblue"},
+               'steps': [{'range': [0, 100], 'color': "lightgreen"},
+                         {'range': [-100, 0], 'color': "lightcoral"}]},
+    ))
+
+    # Demanda calculada en el dia 
+    total_texto = f"Demanda total de bicicletas durante el día: {total_demanda}"
+
+    return grafico_prediccion, grafico_ingresos_egresos, grafico_rentabilidad, total_texto
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
+    
