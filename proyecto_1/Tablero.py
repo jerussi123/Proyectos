@@ -235,7 +235,7 @@ def validar_modelo(n_clicks, temp, humidity, wind_speed, solar_radiation, rainfa
     rentabilidad = ingresos - costos
     rentabilidad_porcentaje = (rentabilidad / ingresos) * 100 if ingresos > 0 else 0
 
-    # Idea grafico de rentabilidada
+    # Idea grafico de rentabilidad
     grafico_rentabilidad = go.Figure(go.Indicator(
         mode="gauge+number",
         value=rentabilidad_porcentaje,
@@ -246,11 +246,9 @@ def validar_modelo(n_clicks, temp, humidity, wind_speed, solar_radiation, rainfa
                          {'range': [-100, 0], 'color': "lightcoral"}]},
     ))
 
-    # Demanda calculada en el dia 
     total_texto = f"Demanda total de bicicletas durante el día: {total_demanda}"
 
     return grafico_prediccion, grafico_ingresos_egresos, grafico_rentabilidad, total_texto
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-    
