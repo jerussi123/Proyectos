@@ -4,9 +4,13 @@ from dash.dependencies import Input, Output, State
 import dash_bootstrap_components as dbc
 import plotly.express as px
 import plotly.graph_objects as go
+import tensorflow as tf
+import keras
 import math  
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
+
+model = keras.models.load_model('proyecto2/Ciencia_de_Datos/modelo_proyecto2f.keras')
 
 home_layout = html.Div([html.H1("Home"), html.P("Welcome to the Home page!")])
 data_exploration_layout = html.Div([html.H1("Data Exploration"), html.P("Explore your data here!")])
