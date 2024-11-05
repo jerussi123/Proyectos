@@ -64,7 +64,7 @@ SELECT
     y
 FROM prodq1;"""
 df = pd.read_sql(query, engine)
-df
+print(df)
 
 # Data limpia
 df_numerico = df.select_dtypes(include=['float64', 'int64'])
