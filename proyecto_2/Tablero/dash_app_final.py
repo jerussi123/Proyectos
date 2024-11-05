@@ -17,7 +17,7 @@ import math
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.FLATLY], suppress_callback_exceptions=True)
 
-env_path="c:/Users/jorru/OneDrive - Universidad de los andes/Maestria/Analítica_computacional/Talleres/Taller_10/env/app.env"
+env_path="proyecto_2/Tablero/env/app.env"
 # load env 
 load_dotenv(dotenv_path=env_path)
 # extract env variables
@@ -44,7 +44,24 @@ engine = psycopg2.connect(
 cursor = engine.cursor()
 
 query = """
-SELECT * 
+SELECT
+    age,
+    job,
+    marital,
+    education,
+    default1 as default,
+    balance,
+    housing,
+    loan,
+    contact,
+    day,
+    month,
+    duration,
+    campaign,
+    pdays,
+    previous,
+    poutcome,
+    y
 FROM prodq1;"""
 df = pd.read_sql(query, engine)
 df

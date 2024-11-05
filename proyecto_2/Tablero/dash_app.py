@@ -791,7 +791,7 @@ def on_predict(age_value, housing_value, loan_value, default_value, balance_valu
                 is_open=True,
                 dismissable=True,
                 duration=7000, 
-            ) 
+            ), None
     
     return dash.no_update  # If button has not been clicked, do nothing
 
